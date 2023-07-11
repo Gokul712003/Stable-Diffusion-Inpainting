@@ -2,7 +2,7 @@ import torch
 from PIL import Image
 from diffusers import StableDiffusionInpaintPipeline
 
-init_image=Image.open('generated.png')
+init_image=Image.open('gautam.jpg')
 mask_image=Image.open('mask.png')
 prompt =' *Same Prompt HERE as if in Base Image Gen to outpaint the image for the aspect ratio* '
 negativeprompt='cropped,worstquality'
@@ -20,4 +20,4 @@ pipe.enable_attention_slicing()
 
 outpainted_image = pipe(prompt=prompt,negative_prompt=negativeprompt,image=init_image, mask_image=mask_image,num_inference_steps=steps,guidance_scale=7.5).images[0]
 outpainted_image=outpainted_image.resize(image_size)
-outpainted_image.save('inpaintedfinal.png')
+outpainted_image.save('Gautaminpainted.png')
